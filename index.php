@@ -37,5 +37,9 @@ $titulaire1 = new Titulaire("Delubriac", "Antoine", "29-11-1989", "Strasbourg");
 
 // Instanciation de Comptebanquaire
 $compte1 = new CompteBanquaire("Livret A", 0.00, "EUR", $titulaire1);
+$compte2 = new CompteBanquaire("Compte courant", 0.00, "EUR", $titulaire1);
 
-echo $titulaire1->getAge();
+echo $compte1->depot(100) . "<br>";
+echo $compte1->virement($compte2, 50.00) . "<br>";
+echo $titulaire1 . "<br>";
+echo $compte2;

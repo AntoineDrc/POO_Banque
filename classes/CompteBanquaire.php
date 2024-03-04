@@ -6,7 +6,7 @@ class CompteBanquaire {
     private float $solde;
     private string $devise;
     private Titulaire $titulaire;
-    private array $comptes;
+    
 
     // Construction de la classe CompteBanquaire
     public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire) {
@@ -14,7 +14,7 @@ class CompteBanquaire {
     $this->solde = $solde;
     $this->devise = $devise;
     $this->titulaire = $titulaire;
-    $this->comptes->ajouterCompte($this);
+    $this->titulaire->ajouterCompte($this);
     }
     
     // Création des getters/setters
@@ -70,19 +70,23 @@ class CompteBanquaire {
         }
     }
 
-    // Création méthode pour ajouter un compte
-    public function ajouterCompte() {
-        
-    }
-
     // Création methode virement
-    public function virement() {
-
+    public function virement(CompteBanquaire $compteDestinataire, float $montant) {
+        // Vérifier si le solde permet le virement
+        if($this->solde >= $montant) {
+            // Soustraire le montant du solde actuel
+            $this->solde -= $montant;
+            // Ajouter le montant au compte destinataire
+            $compteDestinataire->depot($montant);
+            return "Virement de " . $montant . " " . $this->devise . " vers le compte " . $compteDestinataire->getLibelle() . " effectué.";
+        } else {
+            return "Virement impossible : solde insuffisant";
+        }
     }
 
     // Création d'une méthode toString pour récuperer les informations d'un compte banquaire, notamment nom et prénom
-    public function toString() {
-
+    public function __toString() {
+        return "Libellé : " . $this->libelle . ". Solde : " . $this->solde . " " . $this->devise . "<br>";
     }
 }
 

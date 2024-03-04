@@ -6,6 +6,7 @@ class Titulaire {
     private string $prenom;
     private DateTime $dateNaissance;
     private string $ville;
+    private array $comptes;
 
 
 // Constructeur de la classe Titulaire
@@ -85,10 +86,18 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
         $age = date_diff($dateActuelle, $this->dateNaissance);
         return $age->y;
     }
+
+    // Création méthode pour ajouter un compte
+    public function ajouterCompte(CompteBanquaire $compte) {
+        $this->comptes[] = $compte;
+    }
     
     // Création d'une méthode toString pour récuperer toutes les informations d'un titulaire (dont l'âge) et l'ensemble des comptes apparenant à celui-ci
     public function __toString() {
-        // return
-
+        $info = $this->nom . " " . $this->prenom . " " . $this->getAge() . " ans<br>";
+        foreach($this->comptes as $compte) {
+            $info .= $compte->__toString();
+        }
+        return $info;
     }
 }
