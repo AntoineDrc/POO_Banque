@@ -31,3 +31,8 @@ titulaire du compte.
 spl_autoload_register(function ($class_name) {
     include 'classes/' . $class_name . '.php';
 });
+
+// Instanciation de titulaire
+$titulaire1 = new Titulaire("Delubriac", "Antoine", "29-11-1989", "Strasbourg");
+
+echo $titulaire1->getAge();

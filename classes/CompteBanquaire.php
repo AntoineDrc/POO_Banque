@@ -52,13 +52,15 @@ class CompteBanquaire {
     }
 
     // Création methode pour faire un dépôt d'argent
-    public function depot() {
-        
+    public function depot(float $montant) {
+        return
+        $this->solde += $montant;
     }
 
     // Création methode pour retirer de l'argent
-    public function retrait() {
-
+    public function retrait(float $montant) {
+        return
+        $this->solde -= $montant;
     }
 
     // Création methode virement

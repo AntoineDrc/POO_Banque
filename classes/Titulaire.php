@@ -7,14 +7,16 @@ class Titulaire {
     private DateTime $dateNaissance;
     private string $ville;
     private array $comptes;
-}
+
 
 // Constructeur de la classe Titulaire
 public function __construct(string $nom, string $prenom, string $dateNaissance, string $ville) {
     $this->nom = $nom;
     $this->prenom = $prenom;
-    $this->dateNaissance = new DateTime $dateNaissance;
+    $this->dateNaissance = new DateTime($dateNaissance);
     $this->ville = $ville;
+    
+    }
 
     // Création des getters/setters
     public function getNom()
@@ -42,8 +44,8 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
     }
 
     public function getDateNaissance()
-    {
-        return $this->dateNaissance;
+    {   
+        return $this->dateNaissance->format("d/m/Y");
     }
 
     public function setDateNaissance($dateNaissance)
@@ -78,12 +80,14 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
     }
 
     // Création d'une méthode pour calculer l'âge
-    public function age() {
-
+    public function getAge() {
+        $dateActuelle = new DateTime();
+        $age = date_diff($dateActuelle, $this->dateNaissance);
+        return $age->y;
     }
     
     // Création d'une méthode toString pour récuperer toutes les informations d'un titulaire (dont l'âge) et l'ensemble des comptes apparenant à celui-ci
-    public function --toString() {
+    public function __toString() {
 
     }
-} 
+}
