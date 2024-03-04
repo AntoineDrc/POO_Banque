@@ -2,18 +2,22 @@
 
 // Création d'une classe CompteBanquaire
 class CompteBanquaire {
+    // Propriétés privées de la classe
     private string $libelle;
     private float $solde;
     private string $devise;
     private Titulaire $titulaire;
     
 
-    // Construction de la classe CompteBanquaire
+    // Construction de la classe CompteBanquaire, il est appelé à chaque création d'un nouvel objet CompteBanquaire
     public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire) {
+    // Initialisation des propriétés avec les valeurs fournies lors de la création de l'objet
     $this->libelle = $libelle;
     $this->solde = $solde;
     $this->devise = $devise;
     $this->titulaire = $titulaire;
+
+    // Ici, l'objet CompteBanquaire s'ajoute automatiquement au titulaire passé en paramètre
     $this->titulaire->ajouterCompte($this);
     }
     

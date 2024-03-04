@@ -2,20 +2,22 @@
 
 // Création d'une classe Titulaire
 class Titulaire {
+    // Propriétés privées de la classe
     private string $nom;
     private string $prenom;
     private DateTime $dateNaissance;
     private string $ville;
-    private array $comptes;
+    private array $comptes; // Ce tableau contiendra les comptes associés au titulaire
 
 
-// Constructeur de la classe Titulaire
-public function __construct(string $nom, string $prenom, string $dateNaissance, string $ville) {
+    // Constructeur de la classe Titulaire, il est appelé à chaque création d'un nouvel objet Titulaire
+    public function __construct(string $nom, string $prenom, string $dateNaissance, string $ville) {
+    // Initialisation des propriétés avec les valeurs fournies lors de la création de l'objet
     $this->nom = $nom;
     $this->prenom = $prenom;
     $this->dateNaissance = new DateTime($dateNaissance);
     $this->ville = $ville;
-    $this->comptes = [];
+    $this->comptes = []; // Initialisation du tableau de comptes en tant que tableau vide
     
     }
 
@@ -87,8 +89,9 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
         return $age->y;
     }
 
-    // Création méthode pour ajouter un compte
+    // Création méthode pour ajouter un compte au titulaire
     public function ajouterCompte(CompteBanquaire $compte) {
+        // Ajout du compte à la liste des comptes
         $this->comptes[] = $compte;
     }
     
