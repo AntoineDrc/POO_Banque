@@ -6,7 +6,6 @@ class Titulaire {
     private string $prenom;
     private DateTime $dateNaissance;
     private string $ville;
-    private array $comptes;
 
 
 // Constructeur de la classe Titulaire
@@ -15,6 +14,7 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
     $this->prenom = $prenom;
     $this->dateNaissance = new DateTime($dateNaissance);
     $this->ville = $ville;
+    $this->comptes = [];
     
     }
 
@@ -88,6 +88,7 @@ public function __construct(string $nom, string $prenom, string $dateNaissance, 
     
     // Création d'une méthode toString pour récuperer toutes les informations d'un titulaire (dont l'âge) et l'ensemble des comptes apparenant à celui-ci
     public function __toString() {
+        // return
 
     }
 }

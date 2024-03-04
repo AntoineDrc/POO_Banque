@@ -32,7 +32,10 @@ spl_autoload_register(function ($class_name) {
     include 'classes/' . $class_name . '.php';
 });
 
-// Instanciation de titulaire
+// Instanciation de Titulaire
 $titulaire1 = new Titulaire("Delubriac", "Antoine", "29-11-1989", "Strasbourg");
+
+// Instanciation de Comptebanquaire
+$compte1 = new CompteBanquaire("Livret A", 0.00, "EUR", $titulaire1);
 
 echo $titulaire1->getAge();

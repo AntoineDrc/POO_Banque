@@ -6,13 +6,16 @@ class CompteBanquaire {
     private float $solde;
     private string $devise;
     private Titulaire $titulaire;
+    private array $comptes;
 
     // Construction de la classe CompteBanquaire
-    public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire)
+    public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire) {
     $this->libelle = $libelle;
     $this->solde = $solde;
     $this->devise = $devise;
     $this->titulaire = $titulaire;
+    $this->comptes->ajouterCompte($this);
+    }
     
     // Création des getters/setters
     public function getLibelle()
@@ -53,14 +56,23 @@ class CompteBanquaire {
 
     // Création methode pour faire un dépôt d'argent
     public function depot(float $montant) {
-        return
         $this->solde += $montant;
+        return $this->solde;
     }
 
     // Création methode pour retirer de l'argent
     public function retrait(float $montant) {
-        return
-        $this->solde -= $montant;
+        if($montant <= $this->solde) {
+            $this->solde -= $montant;
+            return $this->solde;
+        } else {
+            return "Retrait impossible";
+        }
+    }
+
+    // Création méthode pour ajouter un compte
+    public function ajouterCompte() {
+        
     }
 
     // Création methode virement
@@ -69,7 +81,7 @@ class CompteBanquaire {
     }
 
     // Création d'une méthode toString pour récuperer les informations d'un compte banquaire, notamment nom et prénom
-    public function() {
+    public function toString() {
 
     }
 }
