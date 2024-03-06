@@ -1,7 +1,8 @@
 <?php
 
-// Création d'une classe CompteBanquaire
-class CompteBanquaire {
+
+// Création d'une classe CompteBancaire
+class CompteBancaire {
     // Propriétés privées de la classe
     private string $libelle;
     private float $solde;
@@ -9,7 +10,7 @@ class CompteBanquaire {
     private Titulaire $titulaire;
     
 
-    // Construction de la classe CompteBanquaire, il est appelé à chaque création d'un nouvel objet CompteBanquaire
+    // Construction de la classe CompteBancaire, il est appelé à chaque création d'un nouvel objet CompteBancaire
     public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire) {
     // Initialisation des propriétés avec les valeurs fournies lors de la création de l'objet
     $this->libelle = $libelle;
@@ -17,7 +18,7 @@ class CompteBanquaire {
     $this->devise = $devise;
     $this->titulaire = $titulaire;
 
-    // Ici, l'objet CompteBanquaire s'ajoute automatiquement au titulaire passé en paramètre
+    // Ici, l'objet CompteBancaire s'ajoute automatiquement au titulaire passé en paramètre
     $this->titulaire->ajouterCompte($this);
     }
     
@@ -75,7 +76,7 @@ class CompteBanquaire {
     }
 
     // Création methode virement
-    public function virement(CompteBanquaire $compteDestinataire, float $montant) {
+    public function virement(CompteBancaire $compteDestinataire, float $montant) {
         // Vérifier si le solde permet le virement
         if($this->solde >= $montant) {
             // Soustraire le montant du solde actuel
@@ -88,7 +89,7 @@ class CompteBanquaire {
         }
     }
 
-    // Création d'une méthode toString pour récuperer les informations d'un compte banquaire, notamment nom et prénom
+    // Création d'une méthode toString pour récuperer les informations d'un compte bancaire, notamment nom et prénom
     public function __toString() {
         return "Libellé : " . $this->libelle . ". Solde : " . $this->solde . " " . $this->devise . "<br>";
     }

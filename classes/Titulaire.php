@@ -90,7 +90,7 @@ class Titulaire {
     }
 
     // Création méthode pour ajouter un compte au titulaire
-    public function ajouterCompte(CompteBanquaire $compte) {
+    public function ajouterCompte(CompteBancaire $compte) {
         // Ajout du compte à la liste des comptes
         $this->comptes[] = $compte;
     }
